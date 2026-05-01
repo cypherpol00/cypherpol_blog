@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ articulo.titulo }}</title>
+  <link rel="stylesheet" href="{% static 'noticia/styles.css' %}">
+</head>
+<body>
+  <header>
+    <h1>{{ articulo.titulo }}</h1>
+  </header>
+
+  <main>
+    {% if articulo.imagen %}
+      <img src="{{ articulo.imagen.url }}" alt="{{ articulo.titulo }}" style="max-width:600px; border-radius:8px;">
+    {% endif %}
+    <p>{{ articulo.contenido }}</p>
+    <p><strong>Autor:</strong> {{ articulo.autor }}</p>
+    <p><strong>Publicado:</strong> {{ articulo.fecha_publicacion|date:"d M Y H:i" }}</p>
+  </main>
+
+  <footer>
+    <a href="{% url 'home' %}" class="btn">Volver al inicio</a>
+  </footer>
+</body>
+</html>

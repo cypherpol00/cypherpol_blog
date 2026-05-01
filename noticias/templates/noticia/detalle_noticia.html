@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ noticia.titulo }}</title>
+  <link rel="stylesheet" href="{% static 'noticia/styles.css' %}">
+</head>
+<body>
+  <header>
+    <h1>{{ noticia.titulo }}</h1>
+  </header>
+
+  <main>
+    {% if noticia.imagen %}
+      <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" style="max-width:600px; border-radius:8px;">
+    {% endif %}
+    <p>{{ noticia.resumen }}</p>
+  </main>
+
+  <footer>
+    <a href="{% url 'home' %}" class="btn">Volver al inicio</a>
+  </footer>
+</body>
+</html>
